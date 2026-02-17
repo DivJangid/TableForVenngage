@@ -10,9 +10,8 @@
       'border: 1px solid #D1D5DB !important',
       'margin: 0 !important',
       'padding: 0 !important',
-      'display: block !important',
-      'font-size: 0 !important',
-      'line-height: 0 !important',
+      'display: flex !important',
+      'flex-direction: column !important',
       'margin-block-start: 0 !important',
       'margin-block-end: 0 !important'
     ].join('; '),
@@ -359,63 +358,11 @@
     return parts.join('');
   }
 
-  // ===== Generate pretty HTML for preview (with newlines, without wrapper font-size:0 hack) =====
-  function generatePreviewHTML() {
-    syncStateFromEditor();
-
-    if (state.data.length === 0 || state.cols === 0) {
-      return '<!-- No table data -->';
-    }
-
-    const lastCol = state.cols - 1;
-    const lastRow = state.rows - 1;
-
-    // Preview wrapper: same as WordPress wrapper but without font-size:0/line-height:0
-    const previewWrapperStyle = [
-      'overflow: hidden',
-      'border-radius: 10px',
-      'border: 1px solid #D1D5DB',
-      'margin: 0',
-      'padding: 0',
-      'display: block'
-    ].join('; ');
-
-    let html = '<div style="' + previewWrapperStyle + '">';
-    html += '<table style="' + TABLE_STYLES.table + '">';
-
-    html += '<thead>';
-    html += '<tr style="' + TABLE_STYLES.headerRow + '">';
-    for (let c = 0; c < state.cols; c++) {
-      const text = escapeHTML(state.data[0][c] || '');
-      const thStyle = (c === lastCol) ? TABLE_STYLES.headerCellLast : TABLE_STYLES.headerCell;
-      html += '<th style="' + thStyle + '">' + text + '</th>';
-    }
-    html += '</tr></thead>';
-
-    html += '<tbody>';
-    for (let r = 1; r < state.rows; r++) {
-      const isOdd = (r - 1) % 2 === 1;
-      const rowStyle = isOdd ? TABLE_STYLES.bodyRowOdd : TABLE_STYLES.bodyRowEven;
-      html += '<tr style="' + rowStyle + '">';
-      for (let c = 0; c < state.cols; c++) {
-        const text = escapeHTML(state.data[r] ? (state.data[r][c] || '') : '');
-        const cellStyle = buildBodyCellStyle(c === lastCol, r === lastRow, c === 0 && state.boldCol1);
-        html += '<td style="' + cellStyle + '">' + text + '</td>';
-      }
-      html += '</tr>';
-    }
-    html += '</tbody>';
-
-    html += '</table></div>';
-    return html;
-  }
-
   // ===== Update preview and output =====
   function updatePreview() {
-    // Preview uses clean version (no font-size:0 hack, renders properly in tool)
-    $('preview-container').innerHTML = generatePreviewHTML();
-    // Output code uses WordPress-safe version (minified, with all resets)
-    $('output-code').textContent = generateStyledHTML();
+    const html = generateStyledHTML();
+    $('preview-container').innerHTML = html;
+    $('output-code').textContent = html;
   }
 
   // ===== Copy to clipboard =====
