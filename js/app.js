@@ -107,7 +107,7 @@
       'color: #1a1a2e !important',
       'margin: 0 !important',
       'padding: 0 !important',
-      'table-layout: fixed !important',
+      'table-layout: auto !important',
       'display: table !important',
       'background: none !important',
       'border: none !important',
