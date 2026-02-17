@@ -25,7 +25,7 @@
     headerRow: 'background-color: #0B3D91 !important; background: #0B3D91 !important',
 
     headerCell: [
-      'padding: clamp(8px, 2vw, 14px) clamp(8px, 2.5vw, 16px) !important',
+      'padding: clamp(10px, 2vw, 14px) clamp(10px, 2.5vw, 16px) !important',
       'text-align: left !important',
       'font-weight: 600 !important',
       'color: #FFFFFF !important',
@@ -33,7 +33,7 @@
       'border-bottom: 2px solid #094080 !important',
       'border-top: none !important',
       'border-left: none !important',
-      'font-size: clamp(0.85rem, 3vw, 1.05rem) !important',
+      'font-size: clamp(13px, 3vw, 17px) !important',
       'text-transform: none !important',
       'letter-spacing: 0 !important',
       'word-wrap: break-word !important',
@@ -44,7 +44,7 @@
     ].join('; '),
 
     headerCellLast: [
-      'padding: clamp(8px, 2vw, 14px) clamp(8px, 2.5vw, 16px) !important',
+      'padding: clamp(10px, 2vw, 14px) clamp(10px, 2.5vw, 16px) !important',
       'text-align: left !important',
       'font-weight: 600 !important',
       'color: #FFFFFF !important',
@@ -52,7 +52,7 @@
       'border-bottom: 2px solid #094080 !important',
       'border-top: none !important',
       'border-left: none !important',
-      'font-size: clamp(0.85rem, 3vw, 1.05rem) !important',
+      'font-size: clamp(13px, 3vw, 17px) !important',
       'text-transform: none !important',
       'letter-spacing: 0 !important',
       'word-wrap: break-word !important',
@@ -71,14 +71,14 @@
   // Build body cell style dynamically based on position
   function buildBodyCellStyle(isLastCol, isLastRow, isBold) {
     const styles = [
-      'padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.5vw, 16px) !important',
+      'padding: clamp(8px, 1.8vw, 12px) clamp(10px, 2.5vw, 16px) !important',
       'text-align: left !important',
       isLastRow ? 'border-bottom: none !important' : 'border-bottom: 1px solid #E5E7EB !important',
       isLastCol ? 'border-right: none !important' : 'border-right: 1px solid #E5E7EB !important',
       'border-top: none !important',
       'border-left: none !important',
       'color: #1a1a2e !important',
-      'font-size: clamp(0.8rem, 3.2vw, 1rem) !important',
+      'font-size: clamp(13px, 3.2vw, 15px) !important',
       'word-wrap: break-word !important',
       'overflow-wrap: break-word !important',
       'hyphens: auto !important',
@@ -102,7 +102,7 @@
       'max-width: 100% !important',
       'min-width: ' + minWidth + 'px !important',
       'font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important',
-      'font-size: clamp(0.8rem, 3.2vw, 1rem) !important',
+      'font-size: clamp(13px, 3.2vw, 15px) !important',
       'line-height: 1.5 !important',
       'color: #1a1a2e !important',
       'margin: 0 !important',
