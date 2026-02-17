@@ -5,44 +5,44 @@
   // All properties use !important to prevent WordPress theme CSS from overriding
   const TABLE_STYLES = {
     wrapper: [
-      'overflow-x: auto !important',
-      'overflow-y: hidden !important',
+      'overflow: hidden !important',
       'border-radius: 10px !important',
       'border: 1px solid #D1D5DB !important',
       'margin: 0 !important',
       'padding: 0 !important',
       'display: block !important',
       'width: 100% !important',
+      'max-width: 100% !important',
       'box-sizing: border-box !important',
       'margin-block-start: 0 !important',
-      'margin-block-end: 0 !important',
-      '-webkit-overflow-scrolling: touch !important'
+      'margin-block-end: 0 !important'
     ].join('; '),
 
     table: [
       'border-collapse: collapse !important',
       'border-spacing: 0 !important',
-      'width: max-content !important',
-      'min-width: 100% !important',
-      'max-width: none !important',
+      'width: 100% !important',
+      'max-width: 100% !important',
       'font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important',
-      'font-size: 14px !important',
+      'font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important',
       'line-height: 1.5 !important',
       'color: #1a1a2e !important',
       'margin: 0 !important',
       'padding: 0 !important',
-      'table-layout: auto !important',
+      'table-layout: fixed !important',
       'display: table !important',
       'background: none !important',
       'border: none !important',
       'margin-bottom: 0 !important',
-      'margin-top: 0 !important'
+      'margin-top: 0 !important',
+      'word-wrap: break-word !important',
+      'overflow-wrap: break-word !important'
     ].join('; '),
 
     headerRow: 'background-color: #0B3D91 !important; background: #0B3D91 !important',
 
     headerCell: [
-      'padding: 14px 16px !important',
+      'padding: clamp(8px, 2vw, 14px) clamp(8px, 2.5vw, 16px) !important',
       'text-align: left !important',
       'font-weight: 600 !important',
       'color: #FFFFFF !important',
@@ -50,17 +50,18 @@
       'border-bottom: 2px solid #094080 !important',
       'border-top: none !important',
       'border-left: none !important',
-      'font-size: 15px !important',
+      'font-size: clamp(0.8rem, 2.8vw, 0.9375rem) !important',
       'text-transform: none !important',
       'letter-spacing: 0 !important',
       'word-wrap: break-word !important',
       'overflow-wrap: break-word !important',
+      'hyphens: auto !important',
       'background-color: #0B3D91 !important',
       'background: #0B3D91 !important'
     ].join('; '),
 
     headerCellLast: [
-      'padding: 14px 16px !important',
+      'padding: clamp(8px, 2vw, 14px) clamp(8px, 2.5vw, 16px) !important',
       'text-align: left !important',
       'font-weight: 600 !important',
       'color: #FFFFFF !important',
@@ -68,11 +69,12 @@
       'border-bottom: 2px solid #094080 !important',
       'border-top: none !important',
       'border-left: none !important',
-      'font-size: 15px !important',
+      'font-size: clamp(0.8rem, 2.8vw, 0.9375rem) !important',
       'text-transform: none !important',
       'letter-spacing: 0 !important',
       'word-wrap: break-word !important',
       'overflow-wrap: break-word !important',
+      'hyphens: auto !important',
       'background-color: #0B3D91 !important',
       'background: #0B3D91 !important'
     ].join('; '),
@@ -86,16 +88,17 @@
   // Build body cell style dynamically based on position
   function buildBodyCellStyle(isLastCol, isLastRow, isBold) {
     const styles = [
-      'padding: 12px 16px !important',
+      'padding: clamp(6px, 1.8vw, 12px) clamp(8px, 2.5vw, 16px) !important',
       'text-align: left !important',
       isLastRow ? 'border-bottom: none !important' : 'border-bottom: 1px solid #E5E7EB !important',
       isLastCol ? 'border-right: none !important' : 'border-right: 1px solid #E5E7EB !important',
       'border-top: none !important',
       'border-left: none !important',
       'color: #1a1a2e !important',
-      'font-size: 14px !important',
+      'font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important',
       'word-wrap: break-word !important',
       'overflow-wrap: break-word !important',
+      'hyphens: auto !important',
       'background: inherit !important'
     ];
     if (isBold) {
