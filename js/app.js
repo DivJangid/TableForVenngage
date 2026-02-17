@@ -5,7 +5,8 @@
   // All properties use !important to prevent WordPress theme CSS from overriding
   const TABLE_STYLES = {
     wrapper: [
-      'overflow: hidden !important',
+      'overflow-x: auto !important',
+      'overflow-y: hidden !important',
       'border-radius: 10px !important',
       'border: 1px solid #D1D5DB !important',
       'margin: 0 !important',
@@ -15,29 +16,11 @@
       'max-width: 100% !important',
       'box-sizing: border-box !important',
       'margin-block-start: 0 !important',
-      'margin-block-end: 0 !important'
+      'margin-block-end: 0 !important',
+      '-webkit-overflow-scrolling: touch !important'
     ].join('; '),
 
-    table: [
-      'border-collapse: collapse !important',
-      'border-spacing: 0 !important',
-      'width: 100% !important',
-      'max-width: 100% !important',
-      'font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important',
-      'font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important',
-      'line-height: 1.5 !important',
-      'color: #1a1a2e !important',
-      'margin: 0 !important',
-      'padding: 0 !important',
-      'table-layout: fixed !important',
-      'display: table !important',
-      'background: none !important',
-      'border: none !important',
-      'margin-bottom: 0 !important',
-      'margin-top: 0 !important',
-      'word-wrap: break-word !important',
-      'overflow-wrap: break-word !important'
-    ].join('; '),
+    // table style is now built by buildTableStyle(cols) below
 
     headerRow: 'background-color: #0B3D91 !important; background: #0B3D91 !important',
 
@@ -105,6 +88,34 @@
       styles.push('font-weight: 600 !important');
     }
     return styles.join('; ');
+  }
+
+  // Build table style dynamically — min-width based on column count
+  // Above min-width: table fits container, text wraps (responsive)
+  // Below min-width: table stays readable, wrapper scrolls horizontally
+  function buildTableStyle(cols) {
+    const minWidth = Math.max(300, cols * 120);
+    return [
+      'border-collapse: collapse !important',
+      'border-spacing: 0 !important',
+      'width: 100% !important',
+      'max-width: 100% !important',
+      'min-width: ' + minWidth + 'px !important',
+      'font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important',
+      'font-size: clamp(0.75rem, 2.5vw, 0.875rem) !important',
+      'line-height: 1.5 !important',
+      'color: #1a1a2e !important',
+      'margin: 0 !important',
+      'padding: 0 !important',
+      'table-layout: fixed !important',
+      'display: table !important',
+      'background: none !important',
+      'border: none !important',
+      'margin-bottom: 0 !important',
+      'margin-top: 0 !important',
+      'word-wrap: break-word !important',
+      'overflow-wrap: break-word !important'
+    ].join('; ');
   }
 
   // ===== State =====
@@ -331,7 +342,7 @@
     const parts = [];
 
     parts.push('<div style="' + TABLE_STYLES.wrapper + '">');
-    parts.push('<table style="' + TABLE_STYLES.table + '">');
+    parts.push('<table style="' + buildTableStyle(state.cols) + '">');
 
     // Header
     parts.push('<thead style="margin:0!important;padding:0!important;border:none!important;">');
