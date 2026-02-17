@@ -5,7 +5,8 @@
   // All properties use !important to prevent WordPress theme CSS from overriding
   const TABLE_STYLES = {
     wrapper: [
-      'overflow: hidden !important',
+      'overflow-x: auto !important',
+      'overflow-y: hidden !important',
       'border-radius: 10px !important',
       'border: 1px solid #D1D5DB !important',
       'margin: 0 !important',
@@ -13,7 +14,8 @@
       'display: flex !important',
       'flex-direction: column !important',
       'margin-block-start: 0 !important',
-      'margin-block-end: 0 !important'
+      'margin-block-end: 0 !important',
+      '-webkit-overflow-scrolling: touch !important'
     ].join('; '),
 
     table: [
@@ -27,7 +29,7 @@
       'color: #1a1a2e !important',
       'margin: 0 !important',
       'padding: 0 !important',
-      'min-width: 320px !important',
+      'table-layout: auto !important',
       'background: none !important',
       'border: none !important',
       'margin-bottom: 0 !important',
